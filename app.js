@@ -50,7 +50,7 @@ async function loadUpcomingMatches() {
     );
 
     const result = await response.json();
-
+console.log(result);
     if (!result.data || result.data.length === 0) {
       container.innerHTML = "<p>No upcoming matches.</p>";
       return;
