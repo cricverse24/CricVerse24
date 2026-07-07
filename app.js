@@ -14,7 +14,8 @@ async function loadMatches() {
     );
 
     const result = await response.json();
-
+container.innerHTML = "<pre>" + JSON.stringify(result, null, 2) + "</pre>";
+return;
     if (!result.data || result.data.length === 0) {
       container.innerHTML = "<p>No live matches available.</p>";
       return;
