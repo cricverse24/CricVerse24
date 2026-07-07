@@ -77,3 +77,37 @@ console.log(result);
 }
 
 loadUpcomingMatches();
+async function loadNews() {
+  const container = document.getElementById("newsContainer");
+
+  try {
+    const response = await fetch(
+      `https://api.cricapi.com/v1/news?apikey=${apiKey}`
+    );
+
+    const result = await response.json();
+
+    if (!result.data || result.data.length === 0) {
+      container.innerHTML = "<p>No news available.</p>";
+      return;
+    }
+
+    let html = "";
+
+    result.data.slice(0, 10).forEach(news => {
+      html += `
+        <div class="card">
+          <h3>${news.title}</h3>
+          <a href="${news.source || news.link}" target="_blank">Read More</a>
+        </div>
+      `;
+    });
+
+    container.innerHTML = html;
+
+  } catch (err) {
+    container.innerHTML = "<p>Failed to load news.</p>";
+  }
+}
+
+loadNews();
