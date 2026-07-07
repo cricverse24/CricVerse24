@@ -1,6 +1,75 @@
-<section class="cards">
-    <h2>🏏 Live Matches</h2>
-    <div id="liveMatches">
-        Loading live matches...
-    </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CricVerse24 - Live Cricket Scores</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+<h1>🏏 CricVerse24</h1>
+
+<nav>
+<a href="#">Home</a>
+<a href="#live">Live Scores</a>
+<a href="#news">News</a>
+<a href="#upcoming">Upcoming</a>
+</nav>
+
+<input type="text" id="searchBox" placeholder="Search Team...">
+
+</header>
+
+<main>
+
+<section id="live">
+<h2>🔴 Live Matches</h2>
+
+<div id="liveMatches">
+Loading live matches...
+</div>
 </section>
+
+<section id="news">
+<h2>📰 Latest Cricket News</h2>
+
+<div id="newsContainer">
+
+<div class="card">
+<h3>Loading News...</h3>
+</div>
+
+</div>
+
+</section>
+
+<section id="upcoming">
+<h2>📅 Upcoming Matches</h2>
+
+<div id="upcomingMatches">
+
+<div class="card">
+Loading upcoming matches...
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+<footer>
+
+<p>© 2026 CricVerse24 | Live Cricket Scores</p>
+
+</footer>
+
+<script src="app.js"></script>
+
+</body>
+</html>
