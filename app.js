@@ -1,22 +1,38 @@
-async function showScore() {
+const apiKey = "APNI_API_KEY_YAHAN_LIKHO";
+
+async function loadMatches() {
+  const container = document.getElementById("liveMatches");
+
   try {
-    const response = await fetch("https://api.cricapi.com/v1/currentMatches?apikey=31090fe2-48a3-4286-b565-aa560a422e64&offset=0");
+    const res = await fetch(
+      `https://api.cricapi.com/v1/currentMatches?apikey=${apiKey}&offset=0`
+    );
 
-    const result = await response.json();
+    const result = await res.json();
 
-    if (result.data && result.data.length > 0) {
-      let text = "";
-
-      result.data.slice(0, 5).forEach(match => {
-        text += `${match.name}\n`;
-        text += `${match.status}\n\n`;
-      });
-
-      alert(text);
-    } else {
-      alert("No live matches found.");
+    if (!result.data || result.data.length === 0) {
+      container.innerHTML = "<p>No live matches available.</p>";
+      return;
     }
-  } catch (error) {
-    alert("Error loading live scores.");
+
+    let html = "";
+
+    result.data.forEach(match => {
+      html += `
+        <div class="card">
+          <h3>${match.name}</h3>
+          <p><strong>Status:</strong> ${match.status}</p>
+          <p><strong>Venue:</strong> ${match.venue}</p>
+          <hr>
+        </div>
+      `;
+    });
+
+    container.innerHTML = html;
+
+  } catch (e) {
+    container.innerHTML = "<p>Failed to load matches.</p>";
   }
 }
+
+loadMatches();
