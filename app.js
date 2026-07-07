@@ -1,4 +1,4 @@
-31090fe2-48a3-4286-b565-aa560a422e64
+const apiKey = "31090fe2-48a3-4286-b565-aa560a422e64";
 
 async function loadMatches() {
   const container = document.getElementById("liveMatches");
